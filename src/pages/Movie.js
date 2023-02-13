@@ -27,13 +27,13 @@ function Movie() {
           navigate("/", { replace: true });
         });
     }
-
+    console.log("teste");
     getMovieByID();
 
     return () => {
       console.log("Elemento Filme Desmontado!");
     };
-  }, []);
+  }, [id, navigate]);
 
   function saveMovie() {
     const myMovieList = localStorage.getItem("reactflix");

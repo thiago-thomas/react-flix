@@ -85,7 +85,7 @@ function Home() {
         })}
       </div>
       <button onClick={handlePage} className="maisfilmes">
-        {process.env.REACT_APP_TESTAPI}
+        Mais Filmes
       </button>
     </div>
   );

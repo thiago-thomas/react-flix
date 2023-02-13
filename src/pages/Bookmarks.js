@@ -11,7 +11,8 @@ function Bookmarks() {
   }, []);
 
   function deleteMovie(e) {
-    const newListMovies = favMovies.filter((mv) => mv.id != e.target.value);
+    const movieId = Number(e.target.value);
+    const newListMovies = favMovies.filter((mv) => mv.id !== movieId);
     setFavMovies(newListMovies);
     localStorage.setItem("reactflix", JSON.stringify(newListMovies));
     toast.success("Filme excluido com sucesso!");
