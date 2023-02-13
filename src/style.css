@@ -41,7 +41,7 @@ body {
 }
 
 .homepage {
-  padding: 0 180px;
+  padding: 0 120px;
 }
 
 .listaFilmes {
@@ -49,7 +49,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   margin: 50px 0;
-  gap: 10px;
+  gap: 40px;
 }
 
 .listaFilmes.detail {
@@ -63,7 +63,7 @@ body {
 }
 
 .listaFilmes article {
-  width: 300px;
+  width: 280px;
 }
 
 .listaFilmes h3 {
@@ -73,9 +73,9 @@ body {
 }
 
 .listaFilmes img {
-  width: 300px;
-  height: 500px;
-  border-radius: 8px 8px 0 0;
+  width: 280px;
+  height: 470px;
+  border-radius: 8px;
   filter: brightness(100%);
   transition: all .5s ease;
 }
@@ -84,21 +84,36 @@ body {
   filter: brightness(70%);
 }
 
-.listaFilmes a {
+.listaFilmes .bookmarks-options {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding: 10px 0;
-  font-size: 24px;
-  background-color: blue;
-  text-decoration: none;
-  color: white;
-  margin-top: -5px;
-  border-radius: 0 0 8px 8px ;
+  margin-top: 10px;
 }
 
-.listaFilmes a.delete-fav {
-  background-color: red;
+.listaFilmes a.details,
+.listaFilmes button.delete-fav {
+  width: 130px;
+  margin: 0;
+  padding: 12px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  background-color: gainsboro;
+  border: 0;
+  color: black;
+  border-radius: 4px;
+  transition: all .3s;
+}
+
+.listaFilmes a.details:hover {
+  background-color: blue;
+  color: white;
+}
+
+.listaFilmes button.delete-fav:hover {
+  background-color: rgb(218, 3, 3);
+  color: white;
 }
 
 .listaFilmes h4 {
@@ -112,6 +127,7 @@ body {
 }
 
 .listaFilmes button {
+  background-color: gainsboro;
   margin: 15px 0;
   font-size: 20px;
   border: 0;
@@ -119,16 +135,11 @@ body {
   padding: 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: all .5s;
+  transition: all .3s;
 }
 
 .listaFilmes button:hover {
   background-color: blue;
-  color: white;
-}
-
-.listaFilmes button.delete-fav:hover {
-  background-color: red;
   color: white;
 }
 
@@ -168,7 +179,9 @@ body {
 
 h1.title {
   text-align: center;
-  margin: 10px 0;
+  margin-top: 40px;
+  font-size: 50px;
+  font-style: italic;
 }
 
 .maisfilmes {

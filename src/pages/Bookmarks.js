@@ -36,14 +36,18 @@ function Bookmarks() {
                 alt={filme.title}
                 className="img"
               />
-              <Link to={`/filme/${filme.id}`}>Detalhes</Link>
-              <button
-                value={filme.id}
-                className="delete-fav"
-                onClick={deleteMovie}
-              >
-                Excluir
-              </button>
+              <div className="bookmarks-options">
+                <Link to={`/filme/${filme.id}`} className="details">
+                  Detalhes
+                </Link>
+                <button
+                  value={filme.id}
+                  className="delete-fav"
+                  onClick={deleteMovie}
+                >
+                  Excluir
+                </button>
+              </div>
             </article>
           );
         })}
