@@ -63,6 +63,7 @@ function Home() {
 
   return (
     <div className="homepage">
+      <h1 className="title">Filmes em lançamento</h1>
       <div className="listaFilmes">
         {movies.map((filme) => {
           return (
