@@ -21,7 +21,7 @@ function Bookmarks() {
   return (
     <div>
       <h1 className="title">Meus Filmes</h1>
-      <div className="listaFilmes">
+      <div className="listaFilmes bookmarks">
         {favMovies.length === 0 && <h3>Lista de filmes vazia!</h3>}
         {favMovies.map((filme) => {
           return (
