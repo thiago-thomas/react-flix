@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
 
 * {
   padding: 0;
@@ -30,8 +31,9 @@ body {
 .logo {
   text-decoration: none;
   font-size: 30px;
+  font-family: 'Alkatra', cursive;
+  color: #e50914;
   cursor: pointer;
-  color: white;
   font-weight: bold;
 }
 
@@ -60,7 +62,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 40px auto;
   width: 50%;
   text-align: center;
   gap: 10px;
@@ -153,6 +155,53 @@ body {
   color: white;
 }
 
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 30px;
+  font-family: 'Alkatra', cursive;
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.welcome h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.welcome .reactflix {
+  color: #e50914;
+}
+
+.welcome h2 {
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+
+.welcome a {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px;
+  background-color: #e50914;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: .3s all ease;
+}
+
+.welcome a:hover {
+  background-color: #c11119;
+}
+
+
 .loading {
   display: flex;
   justify-content: center;
@@ -189,9 +238,9 @@ body {
 
 h1.title {
   text-align: center;
-  margin: 50px 0;
+  margin: 50px 0 40px 0;
   font-size: 50px;
-  font-style: italic;
+  font-family: 'Alkatra', cursive;
 }
 
 .maisfilmes {

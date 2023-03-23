@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Header from "../components/Header";
 
 function Bookmarks() {
   const [favMovies, setFavMovies] = useState([]);
@@ -20,6 +21,7 @@ function Bookmarks() {
 
   return (
     <div>
+      <Header />
       <h1 className="title">Meus Filmes</h1>
       <div className="listaFilmes bookmarks">
         {favMovies.length === 0 && <h3>Lista de filmes vazia!</h3>}

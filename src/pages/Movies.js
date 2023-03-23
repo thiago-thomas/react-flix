@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 import api from "../services/api";
 
-function Home() {
+function Movies() {
   const [movies, setMovies] = useState([]);
   //const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -23,6 +24,7 @@ function Home() {
           console.log(page);
         })
         .catch((err) => {
+          console.log(err);
           return;
         });
     }
@@ -62,35 +64,38 @@ function Home() {
   */
 
   return (
-    <div className="homepage">
-      <h1 className="title">Filmes em lançamento</h1>
-      <div className="listaFilmes">
-        {movies.map((filme) => {
-          return (
-            <article key={filme.id}>
-              <div className="inline">
-                <div className="wrap">
-                  <h2 className="titulo">{filme.title}</h2>
+    <div>
+      <Header />
+      <div className="homepage">
+        <h1 className="title">Filmes em lançamento</h1>
+        <div className="listaFilmes">
+          {movies.map((filme) => {
+            return (
+              <article key={filme.id}>
+                <div className="inline">
+                  <div className="wrap">
+                    <h2 className="titulo">{filme.title}</h2>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <Link to={`filme/${filme.id}`}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${filme.poster_path}`}
-                    alt={filme.title}
-                    className="img"
-                  />
-                </Link>
-              </div>
-            </article>
-          );
-        })}
+                <div>
+                  <Link to={`../filme/${filme.id}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${filme.poster_path}`}
+                      alt={filme.title}
+                      className="img"
+                    />
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+        <button onClick={handlePage} className="maisfilmes">
+          Mais Filmes
+        </button>
       </div>
-      <button onClick={handlePage} className="maisfilmes">
-        Mais Filmes
-      </button>
     </div>
   );
 }
 
-export default Home;
+export default Movies;

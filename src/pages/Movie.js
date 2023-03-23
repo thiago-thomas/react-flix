@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import Header from "../components/Header";
 
 import api from "../services/api";
 
@@ -24,7 +25,8 @@ function Movie() {
           setLoading(false);
         })
         .catch((err) => {
-          navigate("/", { replace: true });
+          console.log(err);
+          navigate("/listafilmes", { replace: true });
         });
     }
     console.log("teste");
@@ -58,16 +60,19 @@ function Movie() {
   }
 
   return (
-    <div className="listaFilmes detail">
-      <img
-        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-        className="img"
-        alt={movie.title}
-      />
-      <h3>Sinópse</h3>
-      <p>{movie.overview}</p>
-      <h4>Nota: {movie.vote_average.toFixed(1).replace(".", ",")}</h4>
-      <button onClick={saveMovie}>Salvar Filme</button>
+    <div>
+      <Header />
+      <div className="listaFilmes detail">
+        <img
+          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          className="img"
+          alt={movie.title}
+        />
+        <h3>Sinópse</h3>
+        <p>{movie.overview}</p>
+        <h4>Nota: {movie.vote_average.toFixed(1).replace(".", ",")}</h4>
+        <button onClick={saveMovie}>Salvar Filme</button>
+      </div>
     </div>
   );
 }
