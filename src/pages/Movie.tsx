@@ -2,14 +2,21 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Header from "../components/Header";
-
 import api from "../services/api";
 
+interface MovieType {
+  id: number;
+  title: string;
+  poster_path: string;
+  overview: string;
+  vote_average: number;
+}
+
 function Movie() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [movie, setMovie] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [movie, setMovie] = useState<MovieType | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function getMovieByID() {
@@ -29,7 +36,6 @@ function Movie() {
           navigate("/listafilmes", { replace: true });
         });
     }
-    console.log("teste");
     getMovieByID();
 
     return () => {
@@ -39,7 +45,8 @@ function Movie() {
 
   function saveMovie() {
     const myMovieList = localStorage.getItem("reactflix");
-    let savedMovie = JSON.parse(myMovieList) || [];
+    let savedMovie: MovieType[] = myMovieList ? JSON.parse(myMovieList) : [];
+    if (!movie) return;
     const hasMovie = savedMovie.some((mv) => mv.id === movie.id);
     if (!hasMovie) {
       savedMovie.push(movie);
@@ -51,7 +58,7 @@ function Movie() {
     }
   }
 
-  if (loading) {
+  if (loading || !movie) {
     return (
       <div className="loading">
         <h1>Carregando Filmes...</h1>

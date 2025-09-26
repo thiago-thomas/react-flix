@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Error() {
+export default function Error() {
   return (
     <div className="not-found">
       <h1>404</h1>
@@ -9,5 +9,3 @@ function Error() {
     </div>
   );
 }
-
-export default Error;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../style.css";
 
-function Header() {
+export default function Header(){
   return (
     <div className="menu">
       <Link className="logo" to="/listafilmes">
@@ -12,6 +12,5 @@ function Header() {
       </Link>
     </div>
   );
-}
+};
 
-export default Header;

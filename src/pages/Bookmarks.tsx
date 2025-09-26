@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Header from "../components/Header";
 
+type Movie = {
+  id: number;
+  title: string;
+  poster_path: string;
+};
+
 function Bookmarks() {
-  const [favMovies, setFavMovies] = useState([]);
+  const [favMovies, setFavMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     const myList = localStorage.getItem("reactflix");
-    setFavMovies(JSON.parse(myList) || []);
+    setFavMovies(myList ? JSON.parse(myList) : []);
   }, []);
 
-  function deleteMovie(e) {
-    const movieId = Number(e.target.value);
+  function deleteMovie(e: MouseEvent<HTMLButtonElement>) {
+    const movieId = Number(e.currentTarget.value);
     const newListMovies = favMovies.filter((mv) => mv.id !== movieId);
     setFavMovies(newListMovies);
     localStorage.setItem("reactflix", JSON.stringify(newListMovies));

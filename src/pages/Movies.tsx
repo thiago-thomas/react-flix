@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-
 import api from "../services/api";
 
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+}
+
 function Movies() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   //const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     async function getNowPlayingMovies() {
@@ -32,36 +37,9 @@ function Movies() {
     getNowPlayingMovies();
   }, [page]);
 
-  /*
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  function handleScroll() {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setPage((prev) => prev + 1);
-    }
-  }
-  */
-
   function handlePage() {
     setPage((prev) => prev + 1);
   }
-
-  /*
-  if (loading) {
-    return (
-      <div className="loading">
-        <h1>Carregando Filmes...</h1>
-      </div>
-    );
-  }
-  */
 
   return (
     <div>

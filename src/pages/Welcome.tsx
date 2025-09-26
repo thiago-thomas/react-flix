@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Welcome() {
+export default function Welcome() {
   return (
     <div className="welcome">
       <h1>
@@ -13,5 +13,3 @@ function Welcome() {
     </div>
   );
 }
-
-export default Welcome;
