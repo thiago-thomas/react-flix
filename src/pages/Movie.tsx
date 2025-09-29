@@ -29,6 +29,7 @@ function Movie() {
         })
         .then((response) => {
           setMovie(response.data);
+          console.log(response.data);
           setLoading(false);
         })
         .catch((err) => {
