@@ -1,9 +1,25 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
-import { selectAllFavMovies } from "../features/favmovies/favmoviesSlice";
+import { selectAllFavMovies, movieDeleted } from "../features/favmovies/favmoviesSlice";
+import type { FavMovie } from "../features/favmovies/favmoviesSlice";
+import { toast } from "react-toastify";
+import { useAppDispatch } from "../app/hooks";
 
 export default function Favmovies() {
   const favMovies = useAppSelector(selectAllFavMovies);
+
+  const dispatch = useAppDispatch();
+  
+
+  function handleDeleteFavMovie(movie: FavMovie)  {
+    if (window.confirm(`Deseja realmente excluir o filme "${movie.title}" dos favoritos?`)) {
+      dispatch(movieDeleted(movie));
+      toast.success("Filme removido com sucesso!");
+    } else {
+      return
+    }
+    
+  }
 
   return (
     <div className="listaFilmes bookmarks">
@@ -27,6 +43,7 @@ export default function Favmovies() {
               </Link>
               <button
                 className="delete-fav"
+                onClick={() => handleDeleteFavMovie(filme)}
               >
                 Excluir
               </button>

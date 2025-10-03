@@ -17,7 +17,14 @@ const favmoviesSlice = createSlice({
   reducers: {
     movieAdded:(state, action: PayloadAction<FavMovie>) => {
       state.push(action.payload)
-    }
+    },
+    movieDeleted: (state, action: PayloadAction<FavMovie>) => {
+      const { id } = action.payload
+      const index = state.findIndex((movie) => movie.id === id)
+      if (index !== -1) {
+        state.splice(index, 1)
+      }
+    },
   },
   selectors: {
     selectAllFavMovies: favmoviesState => favmoviesState,
@@ -30,6 +37,6 @@ const favmoviesSlice = createSlice({
 
 export const { selectAllFavMovies, selectCountFavMovies, existFavMovieById } = favmoviesSlice.selectors
 
-export const { movieAdded } = favmoviesSlice.actions
+export const { movieAdded, movieDeleted } = favmoviesSlice.actions
 
 export default favmoviesSlice.reducer;

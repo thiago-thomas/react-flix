@@ -280,8 +280,13 @@ h1.title {
   color: white;
   font-size: 14px;
   font-weight: bold;
-  padding: 2px 6px;
+  padding: 2px;
   border-radius: 50%;
   position: relative;
   margin-right: 8px;
+  min-width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
