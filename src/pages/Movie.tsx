@@ -4,6 +4,12 @@ import { toast } from "react-toastify";
 import Header from "../components/Header";
 import api from "../services/api";
 
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+
+import type { FavMovie } from "../features/favmovies/favmoviesSlice";
+import { movieAdded, existFavMovieById } from "../features/favmovies/favmoviesSlice";
+
+
 interface MovieType {
   id: number;
   title: string;
@@ -18,6 +24,10 @@ function Movie() {
   const [movie, setMovie] = useState<MovieType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const dispatch = useAppDispatch();
+
+  const hasMovie = useAppSelector((state) => existFavMovieById(state, Number(id)));
+  
   useEffect(() => {
     async function getMovieByID() {
       await api
@@ -43,15 +53,18 @@ function Movie() {
       console.log("Elemento Filme Desmontado!");
     };
   }, [id, navigate]);
-
+  
   function saveMovie() {
-    const myMovieList = localStorage.getItem("reactflix");
-    let savedMovie: MovieType[] = myMovieList ? JSON.parse(myMovieList) : [];
     if (!movie) return;
-    const hasMovie = savedMovie.some((mv) => mv.id === movie.id);
+
+    const newFavMovie: FavMovie = {
+      id: movie.id,
+      title: movie.title,
+      poster_path: movie.poster_path
+    }
+    
     if (!hasMovie) {
-      savedMovie.push(movie);
-      localStorage.setItem("reactflix", JSON.stringify(savedMovie));
+      dispatch(movieAdded(newFavMovie));
       toast.success("Filme salvo com sucesso!");
     } else {
       toast.warn("Esse filme já ta na lista!");

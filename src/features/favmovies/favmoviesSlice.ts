@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface FavMovie {
   id: number;
@@ -14,13 +14,22 @@ const initialState: FavMovie[] = [
 const favmoviesSlice = createSlice({
   name: "favmovies",
   initialState,
-  reducers: {},
+  reducers: {
+    movieAdded:(state, action: PayloadAction<FavMovie>) => {
+      state.push(action.payload)
+    }
+  },
   selectors: {
     selectAllFavMovies: favmoviesState => favmoviesState,
-    selectCountFavMovies: favmoviesState => favmoviesState.length
+    selectCountFavMovies: favmoviesState => favmoviesState.length,
+    existFavMovieById: (favmovieState, movieId: number) => {
+      return favmovieState.some((favMovie) => favMovie.id === movieId)
+    }
   }
 });
 
-export const { selectAllFavMovies, selectCountFavMovies } = favmoviesSlice.selectors
+export const { selectAllFavMovies, selectCountFavMovies, existFavMovieById } = favmoviesSlice.selectors
+
+export const { movieAdded } = favmoviesSlice.actions
 
 export default favmoviesSlice.reducer;
