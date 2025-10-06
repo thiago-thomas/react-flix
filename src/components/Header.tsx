@@ -10,12 +10,12 @@ export default function Header(){
 
   return (
     <div className="menu">
-      <Link className="logo" to="/listafilmes">
+      <Link className="logo" to="/movielist">
         RF
       </Link>
-      <Link className="favs" to="/favoritos">
+      <Link className="favs" to="/favorites">
         <span className="favmovies-counter-badge">{movieCount}</span>
-        Filmes favoritos
+        Favorite movies
       </Link>
     </div>
   );

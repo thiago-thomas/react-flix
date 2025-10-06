@@ -34,7 +34,7 @@ function Movie() {
         .get(`movie/${id}`, {
           params: {
             api_key: process.env.REACT_APP_MOVIEDB_API,
-            language: "pt-BR",
+            language: "en-US",
           },
         })
         .then((response) => {
@@ -44,7 +44,7 @@ function Movie() {
         })
         .catch((err) => {
           console.log(err);
-          navigate("/listafilmes", { replace: true });
+          navigate("/movielist", { replace: true });
         });
     }
     getMovieByID();
@@ -65,9 +65,9 @@ function Movie() {
     
     if (!hasMovie) {
       dispatch(movieAdded(newFavMovie));
-      toast.success("Filme salvo com sucesso!");
+      toast.success("Movie saved successfully!");
     } else {
-      toast.warn("Esse filme já ta na lista!");
+      toast.warn("This movie is already in the list!");
       return;
     }
   }
@@ -75,7 +75,7 @@ function Movie() {
   if (loading || !movie) {
     return (
       <div className="loading">
-        <h1>Carregando Filmes...</h1>
+        <h1>Loading Movies...</h1>
       </div>
     );
   }
@@ -89,10 +89,10 @@ function Movie() {
           className="img"
           alt={movie.title}
         />
-        <h3>Sinópse</h3>
+        <h3>Synopsis</h3>
         <p>{movie.overview}</p>
-        <h4>Nota: {movie.vote_average.toFixed(1).replace(".", ",")}</h4>
-        <button onClick={saveMovie}>Salvar Filme</button>
+        <h4>Rating: {movie.vote_average.toFixed(1)}</h4>
+        <button onClick={saveMovie} className="save-btn">Save Movie</button>
       </div>
     </div>
   );

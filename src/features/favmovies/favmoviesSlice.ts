@@ -7,8 +7,9 @@ export interface FavMovie {
 }
 
 const initialState: FavMovie[] = [
-  { id: 157336, title: "Interestelar", poster_path: "/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg" },
-  { id: 574475, title: "Premonição 6: Laços de Sangue", poster_path: "/niTRdfNCT29PXU9YpPPuISrBIw7.jpg" },
+  { id: 105, title: "Back to the Future", poster_path: "/vN5B5WgYscRGcQpVhHl6p9DDTP0.jpg" },
+  { id: 9532, title: "Final Destination", poster_path: "/1mXhlQMnlfvJ2frxTjZSQNnA9Vp.jpg" },
+  { id: 218, title: "The Terminator", poster_path: "/hzXSE66v6KthZ8nPoLZmsi2G05j.jpg" },
 ];
 
 const favmoviesSlice = createSlice({

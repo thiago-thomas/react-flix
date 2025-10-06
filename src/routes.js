@@ -10,9 +10,9 @@ function RoutesApp() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/listafilmes" element={<Movies />} />
-        <Route path="/filme/:id" element={<Movie />} />
-        <Route path="/favoritos" element={<Bookmarks />} />
+        <Route path="/movielist" element={<Movies />} />
+        <Route path="/movie/:id" element={<Movie />} />
+        <Route path="/favorites" element={<Bookmarks />} />
 
         <Route path="*" element={<Error />} />
       </Routes>

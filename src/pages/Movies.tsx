@@ -20,7 +20,7 @@ function Movies() {
         .get("movie/now_playing", {
           params: {
             api_key: process.env.REACT_APP_MOVIEDB_API,
-            language: "pt-BR",
+            language: "en-US",
             page: page,
           },
         })
@@ -45,7 +45,7 @@ function Movies() {
     <div>
       <Header />
       <div className="homepage">
-        <h1 className="title">Filmes em lançamento</h1>
+        <h1 className="title">Upcoming movies</h1>
         <div className="listaFilmes">
           {movies.map((filme) => {
             return (
@@ -56,7 +56,7 @@ function Movies() {
                   </div>
                 </div>
                 <div>
-                  <Link to={`../filme/${filme.id}`}>
+                  <Link to={`../movie/${filme.id}`}>
                     <img
                       src={`https://image.tmdb.org/t/p/original${filme.poster_path}`}
                       alt={filme.title}
@@ -69,7 +69,7 @@ function Movies() {
           })}
         </div>
         <button onClick={handlePage} className="maisfilmes">
-          Mais Filmes
+          Load more...
         </button>
       </div>
     </div>

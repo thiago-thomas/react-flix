@@ -10,11 +10,10 @@ export default function Favmovies() {
 
   const dispatch = useAppDispatch();
   
-
   function handleDeleteFavMovie(movie: FavMovie)  {
-    if (window.confirm(`Deseja realmente excluir o filme "${movie.title}" dos favoritos?`)) {
+    if (window.confirm(`Are you sure you want to remove the movie "${movie.title}" from favorites?`)) {
       dispatch(movieDeleted(movie));
-      toast.success("Filme removido com sucesso!");
+      toast.success("Movie removed successfully!");
     } else {
       return
     }
@@ -23,7 +22,7 @@ export default function Favmovies() {
 
   return (
     <div className="listaFilmes bookmarks">
-      {favMovies.length === 0 && <h3>Lista de filmes vazia!</h3>}
+      {favMovies.length === 0 && <h3>Favorites list is empty!</h3>}
       {favMovies.map((filme) => {
         return (
           <article key={filme.id}>
@@ -38,14 +37,14 @@ export default function Favmovies() {
               className="img"
             />
             <div className="bookmarks-options">
-              <Link to={`/filme/${filme.id}`} className="details">
-                Detalhes
+              <Link to={`/movie/${filme.id}`} className="details">
+                Details
               </Link>
               <button
                 className="delete-fav"
                 onClick={() => handleDeleteFavMovie(filme)}
               >
-                Excluir
+                Remove
               </button>
             </div>
           </article>
