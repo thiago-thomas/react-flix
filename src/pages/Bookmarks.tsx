@@ -1,12 +1,6 @@
 import Header from "../components/Header";
 import Favmovies from "../components/Favmovies";
 
-type Movie = {
-  id: number;
-  title: string;
-  poster_path: string;
-};
-
 function Bookmarks() {
 
   return (
